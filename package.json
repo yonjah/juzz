@@ -1,0 +1,43 @@
+{
+  "name": "joi-example",
+  "version": "0.0.1",
+  "description": "Genrate Random example string from Joi schema",
+  "main": "lib/index.js",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/yonjah/joi-example.git"
+  },
+  "keywords": [
+    "joi",
+    "fuzzing",
+    "fuzzer",
+    "hapi"
+  ],
+  "engines": {
+    "node": ">=8.9.0"
+  },
+  "author": "Yoni Jah <yoni.jah@non.co.il>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/yonjah/funzz/issues"
+  },
+  "devDependencies": {
+    "code": "^5.2.0",
+    "lab": "^16.1.0"
+  },
+  "scripts": {
+    "test": "lab -t 100 -a code -L",
+    "test-debug": "lab -a code",
+    "test-cov-html": "lab -r html -o coverage.html -a code"
+  },
+  "dependencies": {
+    "chance": "^1.0.16",
+    "debug": "^4.0.1",
+    "lodash": "^4.17.11",
+    "moment": "^2.22.2",
+    "randexp": "^0.5.3"
+  },
+  "peerDependencies": {
+    "joi": ">=13.4.x"
+  }
+}
