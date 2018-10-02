@@ -1,11 +1,11 @@
 {
-  "name": "joi-example",
+  "name": "juzz",
   "version": "0.0.1",
-  "description": "Genrate Random example string from Joi schema",
+  "description": "Fuzzer for Joi schema",
   "main": "lib/index.js",
   "repository": {
     "type": "git",
-    "url": "git://github.com/yonjah/joi-example.git"
+    "url": "git://github.com/yonjah/juzz.git"
   },
   "keywords": [
     "joi",
@@ -19,16 +19,18 @@
   "author": "Yoni Jah <yoni.jah@non.co.il>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/yonjah/funzz/issues"
+    "url": "https://github.com/yonjah/juzz/issues"
   },
   "devDependencies": {
     "code": "^5.2.0",
+    "eslint-config-hapi": "^12.0.0",
+    "eslint-plugin-hapi": "^4.1.0",
     "lab": "^16.1.0"
   },
   "scripts": {
-    "test": "lab -t 100 -a code -L",
+    "test": "lab -t 100 -a code -L --coverage-exclude joi",
     "test-debug": "lab -a code",
-    "test-cov-html": "lab -r html -o coverage.html -a code"
+    "test-cov-html": "lab -r html -o coverage.html -a code --coverage-exclude joi"
   },
   "dependencies": {
     "chance": "^1.0.16",
