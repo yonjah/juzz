@@ -7,5 +7,7 @@ module.exports = {
     "parserOptions": {
         "ecmaVersion": 2017
     },
-    "rules": {}
+    "rules": {
+        "no-unreachable": "error"
+    }
 };

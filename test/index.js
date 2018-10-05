@@ -6,6 +6,7 @@ const Path        = require('path');
 const Lab         = require('lab');
 const _           = require('lodash');
 const Joi         = require('../joi/lib');
+const Any         = require('../joi/lib/types/any');
 const Juzz        = require('../lib');
 const Helper      = require('../joi/test/helper');
 
@@ -16,6 +17,24 @@ let descTitle = '';
 let itTitle = '';
 
 const schemas = [];
+
+const anyValidate = Any.prototype.validate;
+
+
+Any.prototype.validate = function (value, options) {
+
+    if (options instanceof Function) {
+        options = undefined;
+    }
+
+    const res =  anyValidate.call(this, value, options);
+    if (!res.error) {
+        schemas.push([itTitle, this, options && Object.assign({}, options)]);
+    }
+
+    return res;
+};
+
 Helper.validateOptions = function (schema, config, options) {
 
     let hasValidTest = false;
@@ -32,13 +51,13 @@ Helper.validateOptions = function (schema, config, options) {
     hasValidTest && schemas.push([
         itTitle,
         Joi.compile(schema),
-        (options || singleOptions) && Object.assign(options || {}, singleOptions || {})
+        (options || singleOptions) && Object.assign({}, options || {}, singleOptions || {})
     ]);
 };
 
 Lab.script = () => ({
-    after: (func) => func(),
-    before: (func) => func(),
+    after: (func) => func(() => {}),
+    before: (func) => func(() => {}),
     describe: (suiteTitle, func) => {
 
         descTitle = suiteTitle;
@@ -68,7 +87,7 @@ Lab.script = () => ({
             const loc = _.trim((new Error()).stack.split('\n')[2]);
             itTitle = `${loc} ${descTitle} ${testTitle}`;
             try {
-                await func();
+                await func(()=>{});
             }
             catch (e) {
                 return;
@@ -77,6 +96,7 @@ Lab.script = () => ({
     }
 });
 
+Object.assign(Lab, Lab.script());
 
 const typesTestPath = Path.join(__dirname, '../joi/test/types');
 Fs.readdirSync(typesTestPath).forEach((file) => {
@@ -85,6 +105,8 @@ Fs.readdirSync(typesTestPath).forEach((file) => {
 });
 
 require('../joi/test');
+
+Any.prototype.validate = anyValidate;
 
 describe('Juzz', () => {
 
