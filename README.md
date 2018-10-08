@@ -44,24 +44,24 @@ Generates a random example according to schema
     for example to replace all strings with `'aaaaa'` use the following replace function -
 
     ```js
-        relace (res, desc) {
+    relace (res, desc) {
 
-            if (desc.type === 'string') {
-                return 'aaaaa';
-            }
-            return res;
+        if (desc.type === 'string') {
+            return 'aaaaa';
         }
+        return res;
+    }
     ```
     replace can also be useful when using custom version of joi without a standard types -
 
     ```js
-        relace (res, desc) {
+    relace (res, desc) {
 
-            if (desc.type === 'myCustomType') {
-                return 'aaaaa';
-            }
-            return res;
+        if (desc.type === 'myCustomType') {
+            return 'aaaaa';
         }
+        return res;
+    }
     ```
 
 - `context`_Object_ - should be identical to the `context` object passed to joi.validate when schema references a context _default({})_
