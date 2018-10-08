@@ -1,0 +1,69 @@
+---
+
+language: node_js
+
+branches:
+  only:
+    - master
+    - /^greenkeeper/.*$/
+
+cache:
+  directories:
+    - node_modules
+
+script:
+  - 'cd joi; git checkout master; git pull;'
+  - 'if [ $JOI_VERSION ]; then cd joi; git checkout $JOI_VERSION ;  fi'
+  - "if [ $LINT ]; then npm run test-lint; fi"
+  - "if [ $COVERAGE ]; then npm run test-cover && bash <(curl -s https://codecov.io/bash) -f coverage/lcov.info; fi"
+  - "if [ $RUN_TEST ]; then npm run test; fi"
+
+jobs:
+  include:
+
+    - stage: tests
+      node_js: 8
+      env:
+        - RUN_TEST=true
+
+    - stage: tests
+      node_js: 10
+      env:
+        - RUN_TEST=true
+
+    - stage: tests
+      node_js: 10
+      env:
+        - RUN_TEST=true
+        - JOI_VERSION=v11.4.0
+
+    - stage: tests
+      node_js: 10
+      env:
+        - RUN_TEST=true
+        - JOI_VERSION=v12.0.0
+
+    - stage: tests
+      node_js: 10
+      env:
+        - RUN_TEST=true
+        - JOI_VERSION=v13.7.0
+
+    - stage: tests
+      node_js: node
+      env:
+        - RUN_TEST=true
+
+    - stage: tests
+      node_js: --lts
+      env:
+        - RUN_TEST=true
+
+    - stage: coverage
+      node_js: node
+      env:
+        - COVERAGE=true
+
+    - stage: lint
+      node_js: node
+      env: LINT=true
