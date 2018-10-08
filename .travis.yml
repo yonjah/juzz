@@ -12,10 +12,10 @@ cache:
     - node_modules
 
 script:
-  - 'cd joi; git checkout master; git pull;'
-  - 'if [ $JOI_VERSION ]; then cd joi; git checkout $JOI_VERSION ;  fi'
+  - 'cd joi; git checkout master; git pull; cd .. '
+  - 'if [ $JOI_VERSION ]; then cd joi; git checkout $JOI_VERSION ;  cd ..; fi'
   - "if [ $LINT ]; then npm run test-lint; fi"
-  - "if [ $COVERAGE ]; then npm run test-cover && bash <(curl -s https://codecov.io/bash) -f coverage/lcov.info; fi"
+  - "if [ $COVERAGE ]; then npm run test-coverage && bash <(curl -s https://codecov.io/bash) -f coverage/lcov.info; fi"
   - "if [ $RUN_TEST ]; then npm run test; fi"
 
 jobs:
