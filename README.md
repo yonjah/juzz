@@ -6,7 +6,7 @@
 [![Known Vulnerabilities](https://snyk.io/test/npm/juzz/badge.svg)](https://snyk.io/test/npm/juzz)
 [![License](https://img.shields.io/npm/l/juzz.svg?maxAge=2592000?style=plastic)](https://github.com/yonjah/juzz/blob/master/LICENSE) [![Greenkeeper badge](https://badges.greenkeeper.io/yonjah/juzz.svg)](https://greenkeeper.io/)
 
-Fuzzer for Joi 
+Fuzzer for [Joi](https://github.com/hapijs/joi)
 
 **Warning** this is a proof of concept and is currently a work in progress.
 It is mostly used by me to automatically add fuzzing to my hapi test suites so stability and accuracy though important is not a major factor.
@@ -42,25 +42,27 @@ Generates a random example according to schema
     + `desc` - the description for that item
     
     for example to replace all strings with `'aaaaa'` use the following replace function -
-        ```js
-            relace (res, desc) {
 
-                if (desc.type === 'string') {
-                    return 'aaaaa';
-                }
-                return res;
+    ```js
+        relace (res, desc) {
+
+            if (desc.type === 'string') {
+                return 'aaaaa';
             }
-        ```
+            return res;
+        }
+    ```
     replace can also be useful when using custom version of joi without a standard types -
-        ```js
-            relace (res, desc) {
 
-                if (desc.type === 'myCustomType') {
-                    return 'aaaaa';
-                }
-                return res;
+    ```js
+        relace (res, desc) {
+
+            if (desc.type === 'myCustomType') {
+                return 'aaaaa';
             }
-        ```
+            return res;
+        }
+    ```
 
 - `context`_Object_ - should be identical to the `context` object passed to joi.validate when schema references a context _default({})_
 - `strict`_Boolean_ - if set to true will bail with an error when schema description is not known (can be useful for debugging) _default(false)_
