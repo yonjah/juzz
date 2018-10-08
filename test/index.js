@@ -116,7 +116,7 @@ describe('Juzz', () => {
 
             try {
                 for (let i = 0; i < 10; i += 1) {
-                    const example = Juzz(schema, { context: options && options.context });
+                    const example = Juzz(schema, { context: options && options.context, strict: true });
                     const { error } = schema.validate(example, options);
                     if (error) {
                         throw new Error(`${JSON.stringify(example)} failed schema validation ${error}`);
