@@ -87,7 +87,7 @@ Lab.script = () => ({
             const loc = _.trim((new Error()).stack.split('\n')[2]);
             itTitle = `${loc} ${descTitle} ${testTitle}`;
             try {
-                await func(()=>{});
+                await func(() => {});
             }
             catch (e) {
                 return;
