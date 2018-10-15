@@ -1,10 +1,8 @@
 'use strict';
 
 // Load modules
-const Path = require('path');
 const Lab  = require('lab');
 const Juzz = require('../lib');
-const _    = require('lodash');
 const Joi  = require('joi');
 
 // Test shortcuts
