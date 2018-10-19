@@ -37,14 +37,14 @@ Generates a random example according to schema
 #### `schema` - a valid joi schema
 
 #### `options` - object with optional options 
-- `replace: (res, desc) => new res` - method that allows to override generated values _default((res) => res)_
+- `replace: (res, desc, rules) => new res` - method that allows to override generated values _default((res) => res)_
     + `res` - the result that `Juzz` created
     + `desc` - the description for that item
     
     for example to replace all strings with `'aaaaa'` use the following replace function -
 
     ```js
-    relace (res, desc) {
+    relace (res, desc, rules) {
 
         if (desc.type === 'string') {
             return 'aaaaa';
@@ -55,7 +55,7 @@ Generates a random example according to schema
     replace can also be useful when using custom version of joi without a standard types -
 
     ```js
-    relace (res, desc) {
+    relace (res, desc, rules) {
 
         if (desc.type === 'myCustomType') {
             return 'aaaaa';
