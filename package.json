@@ -1,6 +1,6 @@
 {
   "name": "juzz",
-  "version": "0.0.5",
+  "version": "0.1.0",
   "description": "Fuzzer for Joi schema",
   "main": "lib/index.js",
   "repository": {
