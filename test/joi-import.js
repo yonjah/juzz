@@ -13,6 +13,7 @@ const Helper      = require('../joi/test/helper');
 // Test shortcuts
 
 const { describe, it } = exports.lab = Lab.script();
+const permutations = 10;
 let descTitle = '';
 let itTitle = '';
 
@@ -115,7 +116,7 @@ describe(`Juzz - Joi ${Joi.version}`, () => {
         it(`schema from test ${title}${options ? '(' + JSON.stringify(options) + ')' : ''}`, () => {
 
             try {
-                for (let i = 0; i < 10; i += 1) {
+                for (let i = 0; i < permutations; i += 1) {
                     const example = Juzz(schema, { context: options && options.context, strict: true });
                     const { error } = schema.validate(example, options);
                     if (error) {
