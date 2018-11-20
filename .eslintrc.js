@@ -3,7 +3,7 @@ module.exports = {
         "es6": true,
         "node": true
     },
-    "extends": "hapi",
+    "extends": ["eslint:recommended", "hapi"],
     "parserOptions": {
         "ecmaVersion": 2017
     },
