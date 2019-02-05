@@ -22,11 +22,11 @@
     "url": "https://github.com/yonjah/juzz/issues"
   },
   "devDependencies": {
-    "code": "^5.2.0",
+    "code": "^5.2.4",
     "eslint-config-hapi": "^12.0.0",
     "eslint-plugin-hapi": "^4.1.0",
-    "joi": "^14.0.0",
-    "lab": "^17.0.2"
+    "joi": "^14.3.1",
+    "lab": "^18.0.1"
   },
   "scripts": {
     "test": "lab -a code",
@@ -34,10 +34,10 @@
     "test-coverage": "lab -a code -r lcov -o coverage/lcov.info --coverage-exclude joi"
   },
   "dependencies": {
-    "chance": "^1.0.16",
-    "debug": "^4.0.1",
+    "chance": "^1.0.18",
+    "debug": "^4.1.1",
     "lodash": "^4.17.11",
-    "moment": "^2.22.2",
+    "moment": "^2.24.0",
     "randexp": "^0.5.3"
   },
   "peerDependencies": {
