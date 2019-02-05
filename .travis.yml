@@ -50,6 +50,12 @@ jobs:
         - JOI_VERSION=v13.7.0
 
     - stage: tests
+      node_js: 10
+      env:
+        - RUN_TEST=true
+        - JOI_VERSION=v14.3.0
+
+    - stage: tests
       node_js: node
       env:
         - RUN_TEST=true
