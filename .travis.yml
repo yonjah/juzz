@@ -13,7 +13,8 @@ cache:
 
 script:
   - 'cd joi; git checkout master; git pull; cd .. '
-  - 'if [ $JOI_VERSION ]; then cd joi; git checkout $JOI_VERSION ;  cd ..; fi'
+  - 'if [ $JOI_VERSION ]; then cd joi; git checkout $JOI_VERSION ; cd ..; fi'
+  - 'cd joi; npm install; rm -rf node_modules/lab; cd ..'
   - "if [ $LINT ]; then npm run test-lint; fi"
   - "if [ $COVERAGE ]; then npm run test-coverage && bash <(curl -s https://codecov.io/bash) -f coverage/lcov.info; fi"
   - "if [ $RUN_TEST ]; then npm run test; fi"
