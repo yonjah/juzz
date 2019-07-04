@@ -31,16 +31,20 @@
   "scripts": {
     "test": "lab -a code",
     "test-lint": "lab -a code -L",
-    "test-coverage": "lab -a code -r lcov -o coverage/lcov.info --coverage-exclude joi"
+    "test-coverage": "lab -a code -r lcov -o coverage/lcov.info --coverage-exclude joi",
+    "snyk-protect": "snyk protect",
+    "prepublish": "npm run snyk-protect"
   },
   "dependencies": {
     "chance": "^1.0.18",
     "debug": "^4.1.1",
     "lodash": "^4.17.11",
     "moment": "^2.24.0",
-    "randexp": "^0.5.3"
+    "randexp": "^0.5.3",
+    "snyk": "^1.189.0"
   },
   "peerDependencies": {
     "joi": ">=11.4.x"
-  }
+  },
+  "snyk": true
 }
